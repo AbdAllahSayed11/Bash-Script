@@ -1,0 +1,204 @@
+#!/usr/bin/bash
+
+#ps
+#echo $name
+#export name=mahmoud
+#cd /
+#pwd
+#echo $$ # print current PID
+#echo $hh
+#sourcing
+# . <File Path>
+# source <File Path>
+
+# two methods to print variable
+# $<var>
+# ${<var>}
+#name=mahmoud
+#echo $name
+#echo ${name: 2} # will skip first two char
+#echo ${name: -1} # will get last char only
+
+
+# bash shell doesn't understand numbers always string
+
+#x=10*41
+#echo $x # 10*41
+
+# to cast variable to number use
+# ((x=10*10))
+# x=$((10*10))
+# let x=10*10
+# declare -i x=10*10 | typeset -i
+
+<< COMMENT
+((x=10*41)) 
+z=$((10*10))
+let y=10*12
+declare -i k=10*17 # make it number permenant
+
+
+echo $x # 410
+echo $z # 100
+echo $y # 120
+echo $k # 170
+y=mahmoud
+echo $y # mahmoud
+k=mahmoud
+echo $k # 0 -> because variable is declared by declare command 
+k=5/2
+echo $k # 2
+echo 5/2 | bc -l
+COMMENT
+
+#test "ali" = "ali" && echo True || echo False
+
+#[ "ali" = "ali" ] && echo True || echo False
+#[ "ali" = "ali" -a helmi = helmii ] && echo True || echo False
+#[ "ali" = "ali" -o helmi = helmii ] && echo True || echo False
+
+#[[ "ali" = a?? && helmi = helmi ]] && echo True || echo False
+#[[ "ali" = a? || helmi = helmi ]] && echo True || echo False
+
+#[[ "ali" =~ li ]] && echo True || echo False
+
+# -gt greater than
+# -ge greater than or equal
+# -lt less than
+# -le less than or equal
+# -eq equal
+# -ne not equal
+
+#[[ 9 -ge 10 ]] && echo True || echo False
+
+#((9==9)) && echo True || echo False 
+# if you use (()) you should use == for equal and spaces is not important
+
+#part 2 
+echo "name/path of file: $0"
+echo "number of args: $#"
+echo "print all args: $*"
+echo "print all args: $@"
+echo "first arg: $1"
+echo "second arg: $2"
+
+<<COMMENT
+if <condition>
+then
+	//logic
+elif <condition>
+then
+	//logic
+else
+
+fi
+
+
+
+# script check if arg is dir or file
+
+if [[ $# -gt 0 ]]
+then 
+	if [[ -f $1 ]]
+	then
+		echo File
+		if [[ -r $1 ]]
+		then
+			echo Readable
+		fi
+		if [[ -w $1 ]]
+		then
+			echo Writable
+		fi
+		if [[ -x $1 ]]
+		then
+			echo Executable
+		fi
+		
+	elif [[ -d $1 ]]
+	then
+		echo Directory
+		if [[ -r $1 ]]
+		then
+			echo Readable
+		fi
+		if [[ -w $1 ]]
+		then
+			echo Writable
+		fi
+		if [[ -x $1 ]]
+		then
+			echo Executable
+		fi
+	else
+		echo "invalid argument"
+	fi
+else
+	echo No Argument
+fi
+
+
+
+# read 
+#echo Please Enter Your Name: 
+read -p "Please Enter Your Name: " name
+
+if [[ $name = "mahmoud" ]]
+then
+	echo Hello Manager
+elif [[ $name = ahmed ]]
+then
+	echo Hello supervisor 
+else
+	echo UNKNOWN USER
+	
+fi
+
+read -p "Please Enter Your Name: " name
+echo "Hello \"$name\""
+echo 'Hello $name'
+COMMENT
+# in double quotes it's weak quoting ignoring $ \
+
+# in single quotes it is strong quoting force shell to make all as string
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

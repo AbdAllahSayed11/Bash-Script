@@ -1,0 +1,183 @@
+#lab 1 bash ABDALLAH SAYED THABET OS ASSUIT
+ # my solve in lab1 bash 
+# mkdir bash ; ch bash;
+ #touch lab1 
+ #gedit lab1 
+ #chmod u+x lab1
+ 
+#1 --sed -n '/^lp1/p' /etc/passwd
+
+#2--sed -n '3!p' /etc/passwd 
+# sed '3d' /etc/passwd
+#3--sed -n '$!p' /etc/passwd
+#sed '$d' /etc/passwd
+ 
+ #4--sed '/^lp1/d' /etc/passwd
+ 
+#5--sed -n 's/lp/mylp/gp' /etc/passwd
+
+
+<<COMMENT
+awk 'BEGIN{
+		FS=":"
+
+	}{
+		
+		print "user name "$1,"Comment "$5
+		
+	}END{
+		print "End"
+	}' /etc/passwd
+	
+<<COMMENT
+
+awk 'BEGIN{
+	FS=":"
+	}{
+	print NR, $1,$5,$6
+	
+	
+	}END{
+	
+	print "end"
+	}' /etc/passwd
+	
+<<COMMENT
+awk 'BEGIN{
+	FS=":"
+	max =0
+	}{
+	if ($3>500){
+	print NR, $1,$3,$5
+	}
+	
+	}END{
+	
+	print "end"
+	}' /etc/passwd
+	
+<<COMMENT	
+	
+	awk 'BEGIN{
+	FS=":"
+	max =0
+	}{
+	if ($3>500){
+	print NR,"user name " $1,"user ID " $3, "Comment "$5
+	}
+	
+	}END{
+	
+	print "end"
+	}' /etc/passwd
+	
+<<COMMENT
+
+awk 'BEGIN{
+	FS=":"
+	max =0
+	}{
+	if ($3=500){
+	print NR,"user name " $1,"user ID " $3, "Comment "$5
+	}
+	
+	}END{
+	
+	print "end"
+	}' /etc/passwd
+	
+<<COMMENT
+
+awk 'BEGIN{
+		FS=":"
+	}{
+		
+		if (NR >=5 && NR <= 15)
+			print NR,$0
+		
+	}END{
+		print "END"
+	}' /etc/passwd
+
+<<COMMENT
+awk 'BEGIN{
+		FS=":"
+	}{
+		
+		if (NR >=5 && NR <= 15)
+			print NR,$0
+		
+	}END{
+		print "END"
+	}' /etc/passwd
+	
+<<COMMENT
+ 	
+
+awk 'BEGIN{
+		FS=":"
+		OFS="#"
+	}{
+		i=1
+		line=""
+		while (i<=NF){
+			if ($i == "lp"){
+				$i="mylp"
+				line=$0
+					}	
+			i++
+		}
+		if (line != "")
+			print line
+	}END{
+	}' /etc/passwd
+
+
+
+<<COMMENT
+awk 'BEGIN {
+	FS=":"	
+    	max_id = 0
+	}{
+    		if ($3 > max_id) {
+       		 max_id = $3
+      		  max_user = $0  
+				}
+	}END{
+    	print  "user with greatest user ID ", max_user
+	}' /etc/passwd
+
+<<COMMENT
+
+
+awk 'BEGIN {
+	FS=":"	
+    	SUM=0
+	}{
+    		SUM+=$3           #if we write print here it will print it every loop
+	}END{
+    	print SUM
+	}' /etc/passwd
+	
+COMMENT
+	
+
+awk 'BEGIN {
+    FS=":"   # Set field separator to ":"
+}
+{
+    if ($4 != prev_gid && prev_gid != "") 
+    { 
+        print "GID", prev_gid, "Sum of UIDs =", sum  
+        sum = $3
+    } else {
+        sum += $3  
+    }
+    prev_gid = $4  
+}
+END {
+    print "GID", prev_gid, "Sum of UIDs =", sum
+}' /etc/passwd
+
+	
+	

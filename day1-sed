@@ -1,0 +1,80 @@
+interactive tool (read file before edit)
+vi, vim, nano, gedit 
+non interactive tool (write in file without read)
+echo, sed
+---------------------------
+sed '' /etc/passwd --> cat /etc/passwd
+sed '1p' /etc/passwd 
+sed -n '1p' /etc/passwd --> head -1 /etc/passwd
+-n for suppress automatic printing
+sed -n '1,5p' /etc/passwd --> head -5 /etc/passwd
+sed -n '2,5p' /etc/passwd --> head -5 /etc/passwd | tail -4
+sed -n '/daemon/p' /etc/passwd -> grep daemon /etc/passwd
+sed -n '/^daemon/p' /etc/passwd --> grep ^daemon /etc/passwd
+ sed -n '/^daemon/,/helmi/p' /etc/passwd  --> from line starts with daemon word to line contain helmi
+ sed -n '/^daemon/,/gdfhsjkhjd/p' /etc/passwd --> will get line start with daemon to end of file because second pattern not found
+ sed -n '9,1p' /etc/passwd --> will get line number 9 only
+ sed -n '/bash$/p' /etc/passwd --> all line ends with bash
+ sed -n '$p' /etc/passwd -> print last line only | tail -1 /etc/passwd
+sed -n '$!p' /etc/passwd --> print all except last line
+sed -n '/helmi/!p' /etc/passwd --> print all lines except line with helmi keyword
+ sed '1,50d' /etc/passwd -> delete from line 1 to line 50 and print reminder of file
+sed -n -e '1p' -e '5p' /etc/passwd --> will print line number 1 and 5
+ sed -n -e '2d' -e '1,5p' /etc/passwd --> will delete line number 2 and print 1,5
+ sed -n -e '1,5d' -e '1,5p' /etc/passwd --> will print nothing
+ sed -n -e '1,5p' -e '2d' /etc/passwd --> will print 1,5 normally because rule 2 done after print
+sed -n -e '1,5p' -e '2d' -e '1,5p' /etc/passwd -> will print 1,5 and delete line 2 then print line 1,5 except line 2
+sed -n 's/root/helmiiiiiiii/gp' /etc/passwd --> substitute all occurrence of keyword root with helmi 
+sed -n '1s/root/helmiiiiiiii/gp' /etc/passwd --> only line number 1
+sed '1,5i in line number 1' /etc/passwd --> insert before each line from 1 , 5
+ sed '1,5a in line number 1' /etc/passwd
+ 
+ 
+ 
+ 
+ // my solve in lab1 bash 
+ mkdir bash ; ch bash;
+ touch lab1 
+ gedit lab1 
+ chmod u+x lab1
+ 
+1 --sed -n '/^lp1/p' /etc/passwd
+
+2--sed -n '3!p' /etc/passwd 
+ sed '3d' /etc/passwd
+3--sed -n '$!p' /etc/passwd
+sed '$d' /etc/passwd
+ 
+ 4--sed '/^lp1/d' /etc/passwd
+ 
+5--sed -n 's/lp/mylp/gp' /etc/passwd
+
+6--
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
