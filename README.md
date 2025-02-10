@@ -1,6 +1,5 @@
-مشﻻ3
-مش
-lab3 -- bash
+lab3 - bash script
+
 #!/usr/bin/bash
 
 
